@@ -146,7 +146,7 @@ function Millones(num) {
     cientos = Math.floor(num / divisor)
     resto = num - (cientos * divisor)
 
-    strMillones = Seccion(num, divisor, "UN MILLON DE", "MILLONES");
+    strMillones = Seccion(num, divisor, "UN MILLON", "MILLONES");
     strMiles = Miles(resto);
 
     if(strMillones == "")

@@ -24,6 +24,12 @@ html {
  * Customize the background color to match your design.
  */
 
+body{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    height: 100vh;
+}
+
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
@@ -80,6 +86,10 @@ textarea {
     resize: vertical;
 }
 
+h1{
+    margin: 0;
+}
+
 /* ==========================================================================
    Browser Upgrade Prompt
    ========================================================================== */
@@ -95,17 +105,256 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+/*
+   INPUTS
+   ============ */
+
+    .input {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        max-width: 350px;
+        width: calc(100% - 2em);
+        vertical-align: top;
+    }
+
+    .input + .input{
+        margin-top: 10px;
+    }
+
+    .input__field {
+        position: relative;
+        display: block;
+        float: right;
+        padding: 0.8em;
+        width: 60%;
+        border: none;
+        border-radius: 0;
+        background: #f0f0f0;
+        color: #aaa;
+        font-weight: bold;
+        -webkit-appearance: none; /* for box shadows to show on iOS */
+    }
+
+    .input__field:focus {
+        outline: none;
+    }
+
+    .input__label {
+        display: inline-block;
+        float: right;
+        padding: 0 1em;
+        width: 40%;
+        color: #FFF77F;
+        font-weight: bold;
+        font-size: 70.25%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .input__label-content {
+        position: relative;
+        display: block;
+        padding: 1.6em 0;
+        width: 100%;
+    }
+
+    .graphic {
+        position: absolute;
+        top: 0;
+        left: 0;
+        fill: none;
+    }
+
+    .icon {
+        color: #ddd;
+        font-size: 150%;
+    }
+
+    .input--hoshi {
+        overflow: hidden;
+    }
+
+    .input__field--hoshi {
+        margin-top: 1em;
+        padding: 0.85em 0em;
+        width: 100%;
+        background: transparent;
+        color: #fff;
+    }
+
+    .input__label--hoshi {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 0 0.25em;
+        width: 100%;
+        height: calc(100% - 1em);
+        text-align: left;
+        pointer-events: none;
+    }
+
+    .input__label-content--hoshi {
+        position: absolute;
+    }
+
+    .input__label--hoshi::before,
+    .input__label--hoshi::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 10px);
+        border-bottom: 1px solid #B9C1CA;
+    }
+
+    .input__label--hoshi::after {
+        margin-top: 2px;
+        border-bottom: 4px solid #76FCFF;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+    }
+
+    .input__field--hoshi:focus + .input__label--hoshi::after,
+    .input--filled .input__label--hoshi::after {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
+    .input--filled .input__label-content--hoshi {
+        -webkit-animation: morpher 0.3s forwards;
+        animation: morpher 0.3s forwards;
+    }
+
+    @-webkit-keyframes morpher {
+        50% {
+            opacity: 0;
+            -webkit-transform: translate3d(1em, 0, 0);
+            transform: translate3d(1em, 0, 0);
+        }
+        51% {
+            opacity: 0;
+            -webkit-transform: translate3d(-1em, -40%, 0);
+            transform: translate3d(-1em, -40%, 0);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: translate3d(0, -40%, 0);
+            transform: translate3d(0, -40%, 0);
+        }
+    }
+
+    @keyframes morpher {
+        50% {
+            opacity: 0;
+            -webkit-transform: translate3d(1em, 0, 0);
+            transform: translate3d(1em, 0, 0);
+        }
+        51% {
+            opacity: 0;
+            -webkit-transform: translate3d(-1em, -40%, 0);
+            transform: translate3d(-1em, -40%, 0);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: translate3d(0, -40%, 0);
+            transform: translate3d(0, -40%, 0);
+        }
+    }
+
+/*
+   CURSOR
+   ============ */
+
+    @keyframes beat {
+        0%   { opacity:1; }
+        50%  { opacity:0; }
+        100% { opacity:1; }
+    }
+
+    @-o-keyframes beat{
+        0%   { opacity:1; }
+        50%  { opacity:0; }
+        100% { opacity:1; }
+    }
+
+    @-moz-keyframes beat{
+        0%   { opacity:1; }
+        50%  { opacity:0; }
+        100% { opacity:1; }
+    }
+
+    @-webkit-keyframes beat{
+        0%   { opacity:1; }
+        50%  { opacity:0; }
+        100% { opacity:1; }
+    }
+
+    .typed-cursor {
+       -webkit-animation: beat 1s infinite;
+       -moz-animation: beat 1s infinite;
+       -o-animation: beat 1s infinite;
+        animation: beat 1s infinite;
+    }
+
+
+
+.logo{
+    display: inline-block;
+    width: 65px;
+    height: auto;
+}
 
 .blue-bg{
     background-color: #38489f;
+    color: #fff;
 }
 
-section{
-    width: 800px;
+section.form{
+    width: 440px;
     padding: 35px;
+    display: inline-block;
+    text-align: center;
+    height: 350px;
+    position: relative;
+    top: 50%;
+    /*margin-top: -175px;*/
 }
 
+.btn{
+    background-color: #FFE200;
+    padding: 14px 38px;
+    border-radius: 50px;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: -.5px;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 18px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    margin-top: 25px;
+}
 
+.btn:hover{
+    color:#fff;
+}
+
+.btn:active{
+    background-color: #fff;
+    color: #000;
+}
 
 
 
