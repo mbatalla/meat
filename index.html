@@ -12,11 +12,13 @@
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/default.css">
+        <link rel="stylesheet" href="css/default.date.css">
+
     </head>
     <body>
         <section class="blue-bg form">
             <h1>Millionarize.me</h1>
-
             <div class="input input--hoshi">
                 <input type="text" id="date" class="input__field input__field--hoshi">
                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="date">
@@ -29,7 +31,6 @@
                     <span class="input__label-content input__label-content--hoshi">Nombre</span>
                 </label>
             </div>
-
             <div class="input input--hoshi">
                 <input type="number" id="qty" class="input__field input__field--hoshi">
                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="qty">
@@ -71,6 +72,19 @@
                     strings: [v],
                     typeSpeed: 0
                 });
+            });
+
+            var $theDate = $('#date').pickadate({
+                formatSubmit: 'dd/mm/yyyy',
+                container: 'body',
+                closeOnSelect: true,
+                closeOnClear: true,
+            })
+
+            var picker = $theDate.pickadate('picker');
+
+            picker.on("set", function(){
+                $('#date').parent().addClass('input--filled');
             });
 
             (function() {
