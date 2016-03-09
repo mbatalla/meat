@@ -40,9 +40,60 @@
             <button class="btn" id="makeMeRich">HACEME MISHONARIO</button>
         </section>
 
-        <section class="blue-bg">
-            <div id="theName"></div>
-            <div id="qtyWords"></div>
+        <section class="blue-bg" id="fortuneCheck">
+            <header>
+                <div class="nameData">
+                    <img src="img/cat.svg" alt="Logo">
+                    <ul>
+                        <li><b>Leo DiCaprio</b></li>
+                        <li>Butt Hollow Road</li>
+                        <li>Salem, VA 24153</li>
+                    </ul>
+                </div>
+                <div class="checkData">
+                    <ul>
+                        <li>Banco Santamber</li>
+                        <li>Rut: 11.111.111-1</li>
+                    </ul>
+                    <h2>0000007</h2>
+                    <div id="theDate" class="line">
+                        <sup>Fecha:</sup>
+                        <div></div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="line">
+                    <sup>Páguese a:</sup>
+                    <div id="theName"></div>
+                </div>
+                <div class="line">
+                    <sup>La cantidad de:</sup>
+                    <div id="qtyWords"></div>
+                </div>         
+            </main>
+            <footer>   
+                <div class="demo">
+                    <h4>Esto es solo un demo</h4>
+                </div>
+                <div class="sign">
+                    <svg version="1.1" id="signature" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                        <path class="st0" d="M28.7,47.5c6,30.1,5.8,61.5-0.6,91.6c3.3,0.6,6.7-0.4,9.9-1.3c43.9-12.9,87.4-27.4,130.2-43.3"/>
+                        <path class="st1" d="M71.6,90.2c6.1-3.3,12.2-6.9,18-10.7c4.2-2.8,8.7-6,10.2-10.8c1.1-3.6,0.3-7.5-1-11
+                            c-2.1-5.3-5.7-10.2-10.8-12.6c-4.4-2-9.6-2-14.3-0.7c-4.7,1.3-9,3.8-13,6.5c-2.5,1.7-4.9,3.5-6.8,5.8c-4.9,6.1-5.3,15.1-2.1,22.2
+                            c3.2,7.2,9.5,12.6,16.5,16.1c16.1,8.1,36.6,6.5,51.2-3.9"/>
+                        <path class="st2" d="M119.3,31.7c0.5,12-0.5,23.9-0.3,35.9s1.5,24.1,6.3,35.1c1.1,2.4,2.3,4.9,4.4,6.6c2,1.7,4.9,2.7,7.4,1.7"/>
+                        <path class="st3" d="M105.1,18.5c6.2,4.1,15.2,3.1,20.3-2.2c0.3-0.3,0.5-0.6,0.5-1c-0.1-0.4-0.5-0.7-0.9-0.9
+                            c-3.9-1.8-8.4-2.2-12.6-1.2"/>
+                        <path class="st4" d="M125.9,31.4c17-4.3,34-8.7,51-13"/>
+                        <path class="st5" d="M152.1,7.3c-4.9,26.3-6.7,53.1-5.3,79.8"/>
+                        <path class="st6" d="M170,40.5c-3.7,9.2-1.3,20.3,5,28c6.3,7.7,16.2,12,26.1,12.7c6.4,0.5,13.1-0.6,18.4-4.2c3.4-2.3,6-5.4,8.3-8.8
+                            c3.7-5.4,6.5-11.7,6-18.2c-0.5-5.6-3.5-10.7-7.4-14.8c-7.4-7.9-18-12.6-28.8-12.8c-4.2-0.1-8.4,0.5-12.1,2.5c-3.6,2-6.6,5.5-7.2,9.6
+                            c-0.1,0.7-0.1,1.4,0.2,2c0.6,1.2,2.1,1.6,3.4,1.7c4,0.3,7.9-0.7,11.7-1.6c16.3-4.1,32.4-8.6,48.4-13.6"/>
+                    </svg>
+                </div>
+                <div class="bottom">322881217543272822722792881217548028865</div>
+            </footer>
         </section>
 
 
@@ -55,24 +106,6 @@
         <script src="js/typed.js"></script>
         <script src="js/main.js"></script>
         <script>
-
-            $('#qty').on('keyup', function() {
-                v = $(this).val();
-                $('#qtyWords').typed('reset');
-                $('#qtyWords').typed({
-                    strings: [NumeroALetras(v)],
-                    typeSpeed: 6
-                });
-            });
-
-            $('#name').on('change', function() {
-                v = $(this).val();
-                $('#theName').typed('reset');
-                $('#theName').typed({
-                    strings: [v],
-                    typeSpeed: 0
-                });
-            });
 
             var $theDate = $('#date').pickadate({
                 formatSubmit: 'dd/mm/yyyy',
@@ -117,6 +150,36 @@
                 }
             })();
 
+            $('#makeMeRich').on('click', function(e){
+                e.preventDefault();
+                $('.form').fadeOut('fast');
+                $('#fortuneCheck').fadeIn('fast', function() {
+                    
+                    var qv = $('#qty').val();
+                    var nv = $('#name').val();
+                    var dv = $('#date').val()
+
+                    $('#theDate > div').text(dv)
+
+                    $('#theName').typed({
+                        strings: [nv],
+                        typeSpeed: 0,
+                        callback: function(){
+                            $('#qtyWords').typed({
+                                strings: [NumeroALetras(qv)],
+                                typeSpeed: 6,
+                                callback: function(){
+                                    $('.typed-cursor').empty().remove();
+                                    $('#signature').addClass('animate')   
+                                } 
+                            });
+                        }
+                    });
+                
+                });
+                
+                
+            });
         </script>
 
     </body>
